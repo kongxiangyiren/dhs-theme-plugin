@@ -13,21 +13,22 @@ DSH 主题管理插件（静态版）：在 **设置 → 主题** 提供主题�
 
 ## 安装
 
-包已装入：
+```bash
+# 从 npm 安装（首选）
+dsh plugin --profile web add @kongxiangyiren/dhs-theme-plugin
 
-```
-~/.dsh/profiles/node_modules/@kongxiangyiren/dhs-theme-plugin/
-```
+# 或从 git 直装（纯 JS 无 prepare，无需 allowBuilds 授权）
+dsh plugin --profile web add git+https://github.com/kongxiangyiren/dhs-theme-plugin
 
-启用补丁（`~/.dsh/profiles/web/cordis.patch.yml`）：
-
-```yaml
-- insert:
-    - id: "@kongxiangyiren/dhs-theme-plugin"
-      name: "@kongxiangyiren/dhs-theme-plugin"
+# 或本地目录（开发/验证）
+dsh plugin --profile web add ./
 ```
 
-修改后需**重启 web 应用**让 loader 重新组合。
+`dsh plugin` 会把包加入 profile 的 `dsh.profile.bundles` 层列表。之后正常启动：
+
+```bash
+npx @deepseek-ai/dsh web
+```
 
 ## 使用
 

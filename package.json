@@ -1,9 +1,14 @@
 {
   "name": "@kongxiangyiren/dhs-theme-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "主题管理插件：设置-主题大分类，内置森林绿/海洋蓝，支持上传 __ModuleLoader__.load 格式的 JS 主题（overrideTokens + CSS + slots UI），点击切换，磁盘持久化。",
   "type": "module",
   "main": "lib/index.js",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "theme"
+  ],
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
@@ -13,11 +18,15 @@
     "client": {
       "platform": "web",
       "immediately": true
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
     }
   },
   "files": [
     "lib",
-    "README.md"
+    "README.md",
+    "cordis.patch.yml"
   ],
   "repository": {
     "type": "git",
@@ -31,5 +40,8 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/dsh-home-paths": "^0.1.0-rc.6"
+  }
 }
