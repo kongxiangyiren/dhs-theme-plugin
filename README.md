@@ -30,6 +30,12 @@ dsh plugin --profile web add ./
 npx @deepseek-ai/dsh web
 ```
 
+## 卸载
+
+```sh
+ dsh plugin --profile web remove @kongxiangyiren/dhs-theme-plugin
+```
+
 ## 使用
 
 1. 打开 **设置 → 主题**
@@ -43,19 +49,23 @@ npx @deepseek-ai/dsh web
 
 ```js
 window.__ModuleLoader__.load({
-  id: "my-theme",
-  factory: (require) => {
+  id: 'my-theme',
+  factory: require => {
     var module = { exports: {} };
     var exports = module.exports;
     function apply(ctx) {
-      ctx.effect(() => ctx.theme.overrideTokens("my-theme", {
-        "--dsw-alias-bg-base": { light: "#ffffff", dark: "#0f1115" },
-        "--dsw-alias-brand-primary": { light: "#7c3aed", dark: "#a78bfa" }
-      }), "my-theme tokens");
+      ctx.effect(
+        () =>
+          ctx.theme.overrideTokens('my-theme', {
+            '--dsw-alias-bg-base': { light: '#ffffff', dark: '#0f1115' },
+            '--dsw-alias-brand-primary': { light: '#7c3aed', dark: '#a78bfa' }
+          }),
+        'my-theme tokens'
+      );
     }
     exports.apply = apply;
     return module.exports;
-  },
+  }
 });
 ```
 
