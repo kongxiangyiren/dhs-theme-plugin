@@ -1,0 +1,35 @@
+{
+  "name": "@kongxiangyiren/dhs-theme-plugin",
+  "version": "0.0.1",
+  "description": "主题管理插件：设置-主题大分类，内置森林绿/海洋蓝，支持上传 __ModuleLoader__.load 格式的 JS 主题（overrideTokens + CSS + slots UI），点击切换，磁盘持久化。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongxiangyiren/dhs-theme-plugin.git"
+  },
+  "homepage": "https://github.com/kongxiangyiren/dhs-theme-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/kongxiangyiren/dhs-theme-plugin/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT"
+}
