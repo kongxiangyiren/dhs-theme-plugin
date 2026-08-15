@@ -7,7 +7,7 @@ DSH 主题管理插件（静态版）：在 **设置 → 主题** 提供主题�
 
 - **设置 → 主题** 大分类（与"通用"平级）
 - 内置主题：**森林绿** / **海洋蓝**（13 个 alias token 覆盖 + 质感特效 CSS：辉光、网格/波纹、暗角、霓虹光带）
-- **上传自定义 JS 主题**：`__ModuleLoader__.load` 格式单文件，支持 `overrideTokens` 改色、注入 CSS、`slots` 注册 UI 组件、`require("react")`
+- **上传自定义 JS 主题**：`__ModuleLoader__.load` 格式单文件，支持 `overrideTokens` 改色、注入 CSS、`slots` 注册 UI 组件、`require("react")`，**无文件大小限制**
 - **点击切换**：上传主题出现在主列表，点一下即应用；切换内置主题自动停用上传主题；同一时刻只有一个生效
 - **磁盘持久化**：Host 半部注册 `webServer` 路由 `GET/POST /api/theme-plugin`，数据存放在 DSH home（`~/.dsh/dhs-theme-plugin.json`），浏览器无关
 
@@ -95,15 +95,18 @@ theme-plugin/
 2. 同步到 `~/.dsh/profiles/node_modules/@kongxiangyiren/dhs-theme-plugin/`
 3. 刷新页面（Host 半部改动需重启应用）
 
-## 持久化文件
+## 持久化
 
-`~/.dsh/dhs-theme-plugin.json`（DSH home 下）：
+每个上传的主题以**独立 .js 文件**存储（内容即 dsh client bundle，一个主题一个文件）：
+
+- 主题文件：`~/.dsh/dhs-theme-plugin-themes/<id>-<hash>.js`
+- 索引（元数据 + 选中）：`~/.dsh/dhs-theme-plugin.json`
 
 ```json
 {
-  "themes": [{ "id": "my-theme", "name": "my-theme", "source": "...", "active": true }],
+  "themes": [{ "id": "my-theme", "name": "my-theme", "file": "my-theme-a1b2c3.js", "active": true }],
   "selected": "ocean"
 }
 ```
 
-`themes` 为上传的主题（含源码），`selected` 记忆森林绿/海洋蓝等自定义主题选中。
+`active` 记录启用状态，`selected` 记忆森林绿/海洋蓝等自定义主题选中。旧版内嵌源码的索引会在首次读取时自动拆分为独立文件。

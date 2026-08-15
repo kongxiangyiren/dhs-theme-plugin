@@ -1,6 +1,6 @@
 {
   "name": "@kongxiangyiren/dhs-theme-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "主题管理插件：设置-主题大分类，内置森林绿/海洋蓝，支持上传 __ModuleLoader__.load 格式的 JS 主题（overrideTokens + CSS + slots UI），点击切换，磁盘持久化。",
   "type": "module",
   "main": "lib/index.js",
